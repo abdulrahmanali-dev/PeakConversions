@@ -2304,3 +2304,26 @@ margin-bottom:20px;
   font-weight: 500;
   color: white;
 }
+
+@media (max-width:992px) {
+  
+  #MiguelModal {
+    top: 50%;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding-bottom: 13px;
+    transform: translateY(-50%);
+    padding: 0;
+
+  }
+  .close-MiguelModal {
+    z-index: 2;
+    position: absolute;
+    top: 4px;
+    left: 11px;
+    background: #ffffff61;
+    padding: 0 7px;
+    border-radius: 28px;
+}
+}
