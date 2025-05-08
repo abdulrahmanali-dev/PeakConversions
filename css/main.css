@@ -2121,7 +2121,7 @@ transition: .5s;
 
           /* overflow: visible; */
           position: absolute;
-          top: 25px;
+          top: 21px;
         }
         @media (max-width:992px) {
           .pricing-title:not(.adjusted) .lighning {
