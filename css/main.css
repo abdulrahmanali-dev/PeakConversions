@@ -2083,7 +2083,6 @@ transition: .5s;
 }
 .btn-i:hover {
   transform: scale(1.1);
-
 }
         .btn-i svg {
           top: 3px;
@@ -2091,23 +2090,60 @@ transition: .5s;
           width: 20px;
           height: 20px;
         }
+        .pricing-title.adjusted
+         {
+          line-height: 33px;
+          padding: 10px 0;
+        }
+        .pricing-title.adjusted  
         .lighning {
+          display: inline;
+          width: 45px;
+          position: relative;
+          /* object-fit: cover; */
+          /* height: 20px; */
+          /* overflow: visible; */
+          /* top: -4px; */
+
+          top: 10px;
+          /* overflow: visible; */
+          top: 9px;
+          position: relative;
+        }
+        .pricing-title:not(.adjusted) .lighning {
           display: inline;
           width: 53px;
           position: relative;
-object-fit: cover;
-height: 20px;
-overflow: visible;
-top: -4px;
-        }
+          /* object-fit: cover; */
+          /* height: 20px; */
+          /* overflow: visible; */
+          /* top: -4px; */
 
+          /* overflow: visible; */
+          position: absolute;
+          top: 25px;
+        }
         @media (max-width:992px) {
+          .pricing-title:not(.adjusted) .lighning {
+            top: 15px;
+            
+        }
           .btn-i {
             position: absolute;
           }
           .lighning {
             width: 45px;
+            display: inline;
+            width: 53px;
+            /* position: relative; */
+            /* object-fit: cover; */
+            /* height: 20px; */
+            top: 10px;
+            /* overflow: visible; */
+            top: 9px;
+            position: relative;
           }
+          
           .cards__image-v2 {
             padding-left: 6rem;
         }
