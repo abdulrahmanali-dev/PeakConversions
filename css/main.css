@@ -2527,10 +2527,6 @@ flex-wrap: wrap;
   margin-top:unset;
   margin-bottom: 21px;
 }
-}
-
-/* Pricing */
-
 .star-reviews img {
   width: 13px;
 }
@@ -2538,3 +2534,6 @@ flex-wrap: wrap;
   font-size: 14px;
   font-weight: 500;
 }
+}
+
+/* Pricing */
