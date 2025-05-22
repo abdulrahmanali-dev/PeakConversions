@@ -535,7 +535,7 @@ ul {
 }
 @media (max-width:992px) {
   .pricing-features li {
-    font-size: 14.6px;
+    font-size: 15.6px;
   }
 }
 .check-icon {
@@ -2392,9 +2392,11 @@ margin-bottom:20px;
   overflow: hidden;
 }
 @media (max-width:992px) {
+.prob-list .d-flex {
 
   width: 178px;
   
+}
 }
 .prob-list .d-flex h3 {
   max-width: 260px;
