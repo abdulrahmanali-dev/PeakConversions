@@ -1071,8 +1071,8 @@ code {
   .prob-list {
     flex-wrap: wrap;
   }
-  .prob-list .d-flex {
-    width: 167px;
+  .prob-list .d-flex:not(.roadmap) {
+    width: 174px;
   }
   .color.loading__fade {
     top: 2rem !important;
