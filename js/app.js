@@ -289,31 +289,32 @@ $(window).on("load", function () {
     }),
 
     
-      $(".modal form").submit(function (e) {
-        e.preventDefault();
-        var t = $(this),
-          a = t.closest(".modal");
-        return t.data("submitted")
-          ? (a.find(".form").addClass("is-hidden"),
-            a.find(".form__reply").addClass("is-visible").html('\n      <i class="ph-thin ph-smiley-wink reply__icon"></i>\n      <p class="reply__title">Oops!</p>\n      <span class="reply__text">You can only submit this form once! Nice try though! 😄</span>\n    '),
-            setTimeout(function () {
-              a.find(".form__reply").removeClass("is-visible").html('\n        <i class="ph-thin ph-smiley reply__icon"></i>\n        <p class="reply__title">Done!</p>\n        <span class="reply__text">See that was simple. Now expect to receive your Free Audit in the next 48h</span>\n      '), a.find(".form").removeClass("is-hidden");
-            }, 5e3),
-            !1)
-          : ($.ajax({ type: "POST", url: "../mail.php", data: t.serialize() })
-              .done(function () {
-                t.data("submitted", !0),
-                  a.find(".form").addClass("is-hidden"),
-                  a.find(".form__reply").addClass("is-visible"),
-                  setTimeout(function () {
-                    a.find(".form__reply").removeClass("is-visible"), a.find(".form").removeClass("is-hidden"), t.trigger("reset");
-                  }, 5e3);
-              })
-              .fail(function () {
-                alert("An error occurred. Please try again.");
-              }),
-            !1);
-      });
+$(".modal form").submit(function (e) {
+  e.preventDefault();
+  var t = $(this),
+    a = t.closest(".modal");
+
+  $.ajax({
+    type: "POST",
+    url: "../mail.php",
+    data: t.serialize()
+  })
+    .done(function () {
+      a.find(".form").addClass("is-hidden");
+      a.find(".form__reply").addClass("is-visible");
+      setTimeout(function () {
+        a.find(".form__reply").removeClass("is-visible");
+        a.find(".form").removeClass("is-hidden");
+        t.trigger("reset");
+      }, 5000);
+    })
+    .fail(function () {
+      alert("An error occurred. Please try again.");
+    });
+
+  return false;
+});
+
   });
   // faq
 function toggleFAQ(e) {
