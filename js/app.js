@@ -1,49 +1,49 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("modal"),
-        overlay = document.getElementById("overlay"),
-        downloadBtn = document.getElementById("download_btn"),
-        closeButtons = document.querySelectorAll(".modal-close-button"),
-        form = document.getElementById("audit-form");
-
-  const openModal = () => {
-    modal.classList.add("active");
-    overlay.classList.add("active");
-    modal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-  };
-
-  const closeModal = () => {
-    modal.classList.remove("active");
-    overlay.classList.remove("active");
-    setTimeout(() => {
-      modal.classList.add("hidden");
-      overlay.classList.add("hidden");
-    }, 300);
-  };
-
-  downloadBtn.addEventListener("click", openModal);
-  overlay.addEventListener("click", closeModal);
-  closeButtons.forEach(btn => btn.addEventListener("click", closeModal));
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const userEmail = form.querySelector('[name="E-mail"]').value;
-    console.log("Sending to:", userEmail);
-
-    emailjs.sendForm("service_vvsc6zn", "template_i61tu8u", form)
-      .then(() => {
-        alert("Thanks! Check your inbox — your roadmap is on its way.");
-        form.reset();
-        closeModal();
-      })
-      .catch((error) => {
-        console.error("Failed to send email:", error);
-        alert("Oops! Something went wrong. Please try again.");
+  const e = document.getElementById("modal"),
+    t = document.getElementById("overlay"),
+    a = document.getElementById("download_btn"),
+    n = document.querySelectorAll(".loading__fade"),
+    s = document.querySelectorAll(".modal-close-button"),
+    l = document.querySelectorAll("section"),
+    c = (e) => {
+      n.forEach((t) => {
+        t.style.zIndex = e;
       });
-  });
-});
+    },
+    d = () => {
+      l.forEach((e) => {
+        e.classList.add("section-index");
+      });
+    };
 
+  function p() {
+    e.classList.remove("active"),
+      t.classList.remove("active"),
+      setTimeout(() => {
+        t.classList.add("hidden"), e.classList.add("hidden");
+      }, 300),
+      c(""),
+      l.forEach((e) => {
+        e.classList.remove("section-index");
+      });
+  }
+  a.addEventListener("click", function () {
+    e.classList.add("active"), t.classList.add("active"), t.classList.remove("hidden"), e.classList.remove("hidden"), c("3"), d();
+  }),
+   
+    t.addEventListener("click", function () {
+      p();
+    }),
+    s.forEach((e) => {
+    console.log('fsdadf');
+    console.log('fsdadf');
+
+      e.addEventListener("click", function () {
+        p();
+    console.log('hlelasd');
+      });
+    });
+}),
   /*! ------------------------------------------------
  * Project Name: Blayden - Personal Portfolio & Resume HTML Template
  * Project Description: Show yourself brightly with Blayden - clean and creative portfolio and resume template!
@@ -293,32 +293,31 @@ $(window).on("load", function () {
     }),
 
     
-$(".modal form").submit(function (e) {
-  e.preventDefault();
-  var t = $(this),
-    a = t.closest(".modal");
-
-  $.ajax({
-    type: "POST",
-    url: "../mail.php",
-    data: t.serialize()
-  })
-    .done(function () {
-      a.find(".form").addClass("is-hidden");
-      a.find(".form__reply").addClass("is-visible");
-      setTimeout(function () {
-        a.find(".form__reply").removeClass("is-visible");
-        a.find(".form").removeClass("is-hidden");
-        t.trigger("reset");
-      }, 5000);
-    })
-    .fail(function () {
-      alert("An error occurred. Please try again.");
-    });
-
-  return false;
-});
-
+      $(".modal form").submit(function (e) {
+        e.preventDefault();
+        var t = $(this),
+          a = t.closest(".modal");
+        return t.data("submitted")
+          ? (a.find(".form").addClass("is-hidden"),
+            a.find(".form__reply").addClass("is-visible").html('\n      <i class="ph-thin ph-smiley-wink reply__icon"></i>\n      <p class="reply__title">Oops!</p>\n      <span class="reply__text">You can only submit this form once! Nice try though! 😄</span>\n    '),
+            setTimeout(function () {
+              a.find(".form__reply").removeClass("is-visible").html('\n        <i class="ph-thin ph-smiley reply__icon"></i>\n        <p class="reply__title">Done!</p>\n        <span class="reply__text">See that was simple. Now expect to receive your Free Audit in the next 48h</span>\n      '), a.find(".form").removeClass("is-hidden");
+            }, 5e3),
+            !1)
+          : ($.ajax({ type: "POST", url: "../mail.php", data: t.serialize() })
+              .done(function () {
+                t.data("submitted", !0),
+                  a.find(".form").addClass("is-hidden"),
+                  a.find(".form__reply").addClass("is-visible"),
+                  setTimeout(function () {
+                    a.find(".form__reply").removeClass("is-visible"), a.find(".form").removeClass("is-hidden"), t.trigger("reset");
+                  }, 5e3);
+              })
+              .fail(function () {
+                alert("An error occurred. Please try again.");
+              }),
+            !1);
+      });
   });
   // faq
 function toggleFAQ(e) {

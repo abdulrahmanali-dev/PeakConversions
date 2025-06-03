@@ -55,15 +55,7 @@
       }
     </script>
     <!-- <script defer data-domain="peakconversions.net" src="https://plausible.io/js/script.js"></script> -->
-  
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("EqCA2Js1g6Dl94zXh"); // Replace with your EmailJS public key
-  })();
-</script>
-
-</head>
+  </head>
   <body>
     
 
@@ -976,7 +968,7 @@
                                         <input type="text" name="name" placeholder="Your name*" required="" >
                                       </div>
                                       <div class="col-12 col-md-12 form__item">
-                                        <input type="email" name="E-mail" placeholder="Email*" required="" >
+                                        <input type="email" name="email" placeholder="Email*" required="" >
                                       </div>
                                       <div class="col-12 form__item">
                                         <label class="checkbox-label d-inline"> By submitting you agree to receive a valueble, digestable newsletter about CVR, LTV and AOV tactics</label>
@@ -987,6 +979,34 @@
                                     </div>
                                   </div>
                                 </form>
+                                <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script type="text/javascript">
+  emailjs.init('EqCA2Js1g6Dl94zXh')
+</script>
+<script>
+  const btn = document.getElementById('button');
+
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   btn.value = 'Sending...';
+
+   const serviceID = 'default_service';
+   const templateID = 'template_i61tu8u';
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      btn.value = 'Send Email';
+      alert('Sent!');
+    }, (err) => {
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
+    });
+});
+</script>
                               </div>
                             </div>
                             <h3>
