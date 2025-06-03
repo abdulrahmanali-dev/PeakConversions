@@ -27,6 +27,7 @@
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+console.log("Sending to:", form.email.value);
 
       emailjs.sendForm("service_vvsc6zn", "template_i61tu8u", this)
         .then(() => {
