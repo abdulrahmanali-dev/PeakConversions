@@ -55,7 +55,15 @@
       }
     </script>
     <!-- <script defer data-domain="peakconversions.net" src="https://plausible.io/js/script.js"></script> -->
-  </head>
+  
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  (function () {
+    emailjs.init("EqCA2Js1g6Dl94zXh"); // Replace with your EmailJS public key
+  })();
+</script>
+
+</head>
   <body>
     
 
@@ -945,7 +953,42 @@
                           <!-- <h3 class="roadmaps-list-headline">The PeakConversions Roadmaps</h3> -->
                           <div class="d-flex roadmap animate-in-up ">
                             <img class="lazy roadmap-image" data-src="./images/Frame 31 (2).png" alt="" >
-                            <a class="flowting download">Download</a>
+                            <a id="download_btn" class="flowting download">Download</a>
+                            <div id="overlay" class="overlay hidden"></div>
+                            <div id="modal" class="modal roadmap-modal hidden">
+                              <button class="modal-close-button" aria-label="Close Modal">&times;</button>
+                              <div class="form-container">
+                                <div class="form__reply centered text-center">
+                                  <i class="ph-thin ph-smiley reply__icon"></i>
+                                  <p class="reply__title">Done!</p>
+                                  <span class="reply__text">See that was simple. Now expect to receive your Free Audit in the next 48h</span>
+                                </div>
+                                <form class="form contact-form" id="audit-form" netlify name="Audit">
+                                  <input type="hidden" name="project_name" value="message from website" >
+                                  <input type="hidden" name="admin_email" value="abdo@peakconversions.com" >
+                                  <input type="hidden" name="form_subject" value="Contact Form Message" >
+                                  <div class="container-fluid p-0">
+                                    <div class="row gx-0" style="padding-bottom: 78px">
+                                      <div class="col-12 col-md-12 form__item mb-0">
+                                        <label class="checkbox-label"> Which email would you like to receive the roadmap at? </label>
+                                      </div>
+                                      <div class="col-12 col-md-12 form__item">
+                                        <input type="text" name="Name" placeholder="Your name*" required="" >
+                                      </div>
+                                      <div class="col-12 col-md-12 form__item">
+                                        <input type="email" name="E-mail" placeholder="Email*" required="" >
+                                      </div>
+                                      <div class="col-12 form__item">
+                                        <label class="checkbox-label d-inline"> By submitting you agree to receive a valueble, digestable newsletter about CVR, LTV and AOV tactics</label>
+                                      </div>
+                                      <div class="col-12 form__item">
+                                        <button style="width: 100%; left: 0" class="cta-button" type="submit">Submit Request</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
                             <h3>
                               The PeakCVR Roadmap
                             </h3>

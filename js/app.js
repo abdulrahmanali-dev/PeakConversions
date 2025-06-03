@@ -1,54 +1,45 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const e = document.getElementById("modal"),
-    t = document.getElementById("overlay"),
-    a = document.getElementById("audit_btn"),
-    o = document.getElementById("modal1"),
-    r = document.getElementById("overlay1"),
-    i = document.getElementById("audit_btn1"),
-    n = document.querySelectorAll(".loading__fade"),
-    s = document.querySelectorAll(".modal-close-button"),
-    l = document.querySelectorAll("section"),
-    c = (e) => {
-      n.forEach((t) => {
-        t.style.zIndex = e;
-      });
-    },
-    d = () => {
-      l.forEach((e) => {
-        e.classList.add("section-index");
-      });
+  document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal"),
+          overlay = document.getElementById("overlay"),
+          downloadBtn = document.getElementById("download_btn"),
+          closeButtons = document.querySelectorAll(".modal-close-button"),
+          form = document.getElementById("audit-form");
+
+    const openModal = () => {
+      modal.classList.add("active");
+      overlay.classList.add("active");
+      modal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
     };
-  function p() {
-    e.classList.remove("active"),
-      t.classList.remove("active"),
-      o.classList.remove("active"),
-      r.classList.remove("active"),
+
+    const closeModal = () => {
+      modal.classList.remove("active");
+      overlay.classList.remove("active");
       setTimeout(() => {
-        t.classList.add("hidden"), e.classList.add("hidden"), r.classList.add("hidden"), o.classList.add("hidden");
-      }, 300),
-      c(""),
-      l.forEach((e) => {
-        e.classList.remove("section-index");
-      });
-  }
-  a.addEventListener("click", function () {
-    e.classList.add("active"), t.classList.add("active"), t.classList.remove("hidden"), e.classList.remove("hidden"), c("3"), d();
-  }),
-    i.addEventListener("click", function () {
-      o.classList.add("active"), r.classList.add("active"), r.classList.remove("hidden"), o.classList.remove("hidden"), c("3"), d();
-    }),
-    t.addEventListener("click", function () {
-      p();
-    }),
-    r.addEventListener("click", function () {
-      p();
-    }),
-    s.forEach((e) => {
-      e.addEventListener("click", function () {
-        p();
-      });
+        modal.classList.add("hidden");
+        overlay.classList.add("hidden");
+      }, 300);
+    };
+
+    downloadBtn.addEventListener("click", openModal);
+    overlay.addEventListener("click", closeModal);
+    closeButtons.forEach(btn => btn.addEventListener("click", closeModal));
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs.sendForm("service_vvsc6zn", "template_i61tu8u", this)
+        .then(() => {
+          alert("Thanks! Check your inbox — your roadmap is on its way.");
+          form.reset();
+          closeModal();
+        })
+        .catch((error) => {
+          console.error("Failed to send email:", error);
+          alert("Oops! Something went wrong. Please try again.");
+        });
     });
-}),
+  });
   /*! ------------------------------------------------
  * Project Name: Blayden - Personal Portfolio & Resume HTML Template
  * Project Description: Show yourself brightly with Blayden - clean and creative portfolio and resume template!
